@@ -4,7 +4,7 @@ export interface SentCommandProps {
 
 const SentCommand = (props: SentCommandProps) => {
     return (
-        <div className="w-full h-auto text-white/25 tracking-widest pt-1">
+        <div className="w-full h-auto text-white/25 tracking-widest pt-1 break-words">
             <span>{">"} {props.command}</span>
         </div>
     )

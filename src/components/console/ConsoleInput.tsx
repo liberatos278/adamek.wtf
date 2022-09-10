@@ -44,7 +44,8 @@ const ConsoleInput = (props: ConsoleInputProps) => {
     }, [])
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.code === 'Enter')
+        console.log(e)
+        if (e.code === 'Enter' || e.code === 'NumpadEnter')
             sendCommand(inputValue)
     }
 
@@ -66,6 +67,7 @@ const ConsoleInput = (props: ConsoleInputProps) => {
                     onChange={e => setInputValue(e.target.value)}
                     onKeyDown={handleKeyDown}
                     spellCheck={false}
+                    maxLength={400}
                     disabled={disableInput} 
                     className="w-full h-full rounded-md bg-white/[.05] outline-none pl-[6.5rem] pr-2" 
                 />
