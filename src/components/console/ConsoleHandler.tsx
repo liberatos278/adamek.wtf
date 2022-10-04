@@ -1,5 +1,5 @@
 import { CommandHandlerOutput, CommandModule } from "../../types/command"
-import { evaluate } from 'mathjs'
+import { evaluate, typeOf } from 'mathjs'
 
 export const handle = async (raw: string): Promise<CommandHandlerOutput> => {
     if (!raw.length)
@@ -19,6 +19,10 @@ export const handle = async (raw: string): Promise<CommandHandlerOutput> => {
     } catch (err: unknown) {
         try {
             const math = await evaluate(raw)
+            
+            if (typeOf(math) !== 'number')
+                throw new Error('Can`t handle this math')
+
             return {
                 output: <div className="w-full h-auto text-white/50">{math}</div>,
                 command: { command, args, raw }
